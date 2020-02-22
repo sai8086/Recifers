@@ -45,10 +45,10 @@ def getvalue(ha,ia,hb,ib,j):
     #print(fl)
     return (jl,fl,f2)
     
-@app.route("/",methods=['GET'])
+@app.route("/result",methods=['GET'])
 def getivalue():
    n= request.args.get('player_id')
-   
+   fruits_=[]
    #n=getivalue()
    conn=sqlite3.connect('links.db')
    print("$")

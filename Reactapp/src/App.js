@@ -67,6 +67,11 @@ render(){
     <div style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}> 
         < Header /> 
         <Slider/>
+        <div className='cardalign'>
+            <Card/>
+            <Card/>
+            <Card/>
+        </div>
         <div className='itemsalign'>
             <a href='fruits.html' style={{backgroundColor:'transparent',border:'none'}} ><Item image='https://www.snopes.com/tachyon/2018/04/fruits_feature.jpg?resize=865,452' type='Fruits'/></a>
             <a style={{backgroundColor:'transparent',border:'none'}} onClick={this.it2}><Item image='https://image.shutterstock.com/image-photo/full-paper-bag-different-health-260nw-572226073.jpg' type='Groceries'/></a>

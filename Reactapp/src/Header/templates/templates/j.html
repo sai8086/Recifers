@@ -1,5 +1,5 @@
 <html lang="en">
-<title>recipe page</title>
+<title></title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -96,10 +96,8 @@ and fill with a little potato and chick pea and sonth if so desired, then fill w
       </div>
     <div class="w3-third w3-container">
       <p class="w3-border w3-padding-large w3-padding-32 w3-center">Ingredients to buy</p>
-      {% for i in l %}
-     <p>{{i}}</p>
-   <p><a href="{{l[i][0]}}" class="a">{{l[i][1]}}</a></p>
-    <p><a href="{{l[i][2]}}" class="a">{{l[i][3]}}</a></p>  
+      {% for i in g %}
+        <p href="{{a}}">{{ i }}</li>
         {% endfor %}
         <br>
       <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
