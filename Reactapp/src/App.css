@@ -1,0 +1,20 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.cardalign{
+  padding: 10px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+}
+
+.itemsalign{
+  padding: 10px;
+  padding: 50px 90px 20px 90px;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+}

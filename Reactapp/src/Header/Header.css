@@ -1,0 +1,18 @@
+.headercontainer{
+    display: flex;
+    flex-direction: row;
+
+}
+.items-text{
+    width:20px;
+    height:20px;
+    background-color: darkgray;
+    border-radius: 25px;
+    text-align: center;
+    display: flex;
+    margin-top: -45px;
+    margin-right: 16px;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+}
