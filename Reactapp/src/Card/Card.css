@@ -1,11 +1,13 @@
 .cardcontainer{
     display: flex;
     flex-direction: column;
+    width: 300px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),    0 1px 5px 0 rgba(0,0,0,0.12);
 }
 img{
     width: 280px;
     margin: 8px;
+    height: 200px;
 }
 .innercard{
     display: flex;
