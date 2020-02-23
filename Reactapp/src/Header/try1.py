@@ -3,6 +3,7 @@ import mysql.connector
 from mysql.connector import Error
 from flask import Flask,render_template,request
 import requests
+import reco
 from reco import dish
 import pickle
 import re 
@@ -16,7 +17,6 @@ def getvalue(ha,ia,hb,ib,j):
     jl=[]
     f2=[]
     for q in range(len(ha)):
-        print('q,ha',q,len(ha))
         #print(l)
         g=j[q]
         jl.append(g)
@@ -27,7 +27,7 @@ def getvalue(ha,ia,hb,ib,j):
             product_page=requests.get(ha[q],headers= headers)
             soup=BeautifulSoup(product_page.content,'html.parser')
             title=soup.select_one(ia[q])
-            mes=title.get_text()
+            mes=title
             fl.append(mes)
             #print(mes)
         #product_page=requests.get(ha[i],headers= headers)
@@ -44,15 +44,19 @@ def getvalue(ha,ia,hb,ib,j):
             #print(mes1)  
     #print(fl)
     return (jl,fl,f2)
+    
 @app.route("/result",methods=['GET'])
 def getivalue():
    n= request.args.get('player_id')
    #n=getivalue()
    conn=sqlite3.connect('links.db')
+   print("$")
    cur=conn.cursor()
    #name =request.form['name']
    #first_name = request.form.get("firstname")
    nam = re.sub(r"\s+", "",n)
+   print("HELLO",nam)
+
    cur.execute("select * from food where name='%s'"%nam)
    i=1
    j=[]
@@ -65,7 +69,7 @@ def getivalue():
        #nam = re.sub(r"\s+", "", name)
    #cur.execute("select * from food where name='cholebatture'")
    rec=cur.fetchall()
-   while(i!=16):
+   while(i!=11):
        for row in rec:
            if row[i]=='none':
                i=i+1
@@ -73,13 +77,7 @@ def getivalue():
                j.append(row[i])
                i=i+1
    #print(j)
-   f=0  
-   qk=cur.execute("select Recipe from food where name='%s'"%nam)
-   qg=qk.fetchall()
-   pk=cur.execute("select link from food where name='%s'"%nam)
-   pg=pk.fetchall()
-   print(qg)
-   #print(rec)
+   f=0
    for f in range(len(j)):
        l=j[f]
       #cur.execute("select * from food where name='pannertikkamasala'")
@@ -97,11 +95,6 @@ def getivalue():
            ib.append(idb)
            #hb.append(hra)
    status = dish(nam)     
-   #print(ha)
-   #print(hb)
-   print("ha",len(ha))
-   print('hb',len(hb))
-   print('j',len(j))
     #print(status)  #passing the data to the function
     #return render_template('pas.html',g=status)
     #g= getvalue(ha,ia,hb,ib,j)
@@ -117,7 +110,7 @@ def getivalue():
    #print(a)
    #print(b)
    #print(c)
-   return render_template('j.html',g= getvalue(ha,ia,hb,ib,j),l=md,n=status,r=qg,hr=pg,name=n)
+   return render_template('j.html',g= getvalue(ha,ia,hb,ib,j),l=md,n=status)
 
 if __name__=="__main__":
     app.run(debug=False)
